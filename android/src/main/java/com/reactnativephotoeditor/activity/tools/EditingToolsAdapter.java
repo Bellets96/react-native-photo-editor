@@ -26,11 +26,11 @@ public class EditingToolsAdapter extends RecyclerView.Adapter<EditingToolsAdapte
 
   public EditingToolsAdapter(OnItemSelected onItemSelected) {
     mOnItemSelected = onItemSelected;
-    mToolList.add(new ToolModel("Shape", R.drawable.ic_brush, ToolType.SHAPE));
-    mToolList.add(new ToolModel("Eraser", R.drawable.ic_eraser, ToolType.ERASER));
-    mToolList.add(new ToolModel("Filter", R.drawable.ic_colorfilter, ToolType.FILTER));
-    mToolList.add(new ToolModel("Sticker", R.drawable.ic_sticker, ToolType.STICKER));
-    mToolList.add(new ToolModel("Text", R.drawable.ic_smallcaps, ToolType.TEXT));
+    mToolList.add(new ToolModel("Disegna", R.drawable.ic_brush, ToolType.SHAPE));
+    mToolList.add(new ToolModel("Cancella", R.drawable.ic_eraser, ToolType.ERASER));
+    //mToolList.add(new ToolModel("Filter", R.drawable.ic_colorfilter, ToolType.FILTER));
+    //mToolList.add(new ToolModel("Sticker", R.drawable.ic_sticker, ToolType.STICKER));
+    mToolList.add(new ToolModel("Testo", R.drawable.ic_smallcaps, ToolType.TEXT));
   }
 
   public interface OnItemSelected {
@@ -50,13 +50,18 @@ public class EditingToolsAdapter extends RecyclerView.Adapter<EditingToolsAdapte
 
   }
 
-  @NonNull
-  @Override
-  public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+@NonNull
+@Override
+public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext())
-      .inflate(R.layout.row_editing_tools, parent, false);
+        .inflate(R.layout.row_editing_tools, parent, false);
+
+    // Calcola la larghezza come frazione del parent
+    int itemWidth = parent.getMeasuredWidth() / mToolList.size();
+    view.getLayoutParams().width = itemWidth;
+
     return new ViewHolder(view);
-  }
+}
 
   @Override
   public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
