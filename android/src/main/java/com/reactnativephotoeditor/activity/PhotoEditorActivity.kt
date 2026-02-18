@@ -337,7 +337,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
     builder.setMessage(getString(R.string.msg_save_image))
     builder.setPositiveButton("Salva") { _: DialogInterface?, _: Int -> saveImage() }
     builder.setNegativeButton("Cancella") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-    builder.setNeutralButton("Scarta modifiche") { _: DialogInterface?, _: Int -> onCancel() }
+    builder.setNeutralButton("Scarta immagine") { _: DialogInterface?, _: Int -> onCancel() }
     builder.create().show()
   }
 
