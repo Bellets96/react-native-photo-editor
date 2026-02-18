@@ -335,9 +335,9 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
   private fun showSaveDialog() {
     val builder = AlertDialog.Builder(this)
     builder.setMessage(getString(R.string.msg_save_image))
-    builder.setPositiveButton("Save") { _: DialogInterface?, _: Int -> saveImage() }
-    builder.setNegativeButton("Cancel") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-    builder.setNeutralButton("Discard") { _: DialogInterface?, _: Int -> onCancel() }
+    builder.setPositiveButton("Salva") { _: DialogInterface?, _: Int -> saveImage() }
+    builder.setNegativeButton("Cancella") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+    builder.setNeutralButton("Scarta modifiche") { _: DialogInterface?, _: Int -> onCancel() }
     builder.create().show()
   }
 
