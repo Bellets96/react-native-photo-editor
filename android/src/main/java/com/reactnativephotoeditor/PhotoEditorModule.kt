@@ -3,6 +3,8 @@ package com.reactnativephotoeditor
 import android.app.Activity
 import android.content.Intent
 import com.facebook.react.bridge.*
+import com.facebook.react.bridge.ActivityEventListener
+import com.facebook.react.bridge.BaseActivityEventListener
 import com.reactnativephotoeditor.activity.PhotoEditorActivity
 import com.reactnativephotoeditor.activity.constant.ResponseCode
 
@@ -11,7 +13,7 @@ enum class ERROR_CODE {
 }
 
 class PhotoEditorModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
-  private val context = reactApplicationContext;
+  private val context = reactContext;
   private val EDIT_SUCCESSFUL = 1
   private var promise: Promise? = null
   override fun getName(): String {
@@ -21,7 +23,7 @@ class PhotoEditorModule(reactContext: ReactApplicationContext) : ReactContextBas
   @ReactMethod
   fun open(options: ReadableMap?, promise: Promise): Unit {
     this.promise = promise
-    val activity = currentActivity
+    val activity = context.currentActivity
     if (activity == null) {
       promise.reject("ACTIVITY_DOES_NOT_EXIST", "Activity doesn't exist");
       return;
