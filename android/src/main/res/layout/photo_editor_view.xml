@@ -52,6 +52,7 @@
     android:orientation="horizontal"
     android:paddingTop="4dp"
     android:paddingBottom="4dp"
+    android:clipToPadding="false"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     app:layout_constraintBottom_toTopOf="@+id/guideline"
     app:layout_constraintEnd_toEndOf="parent"
