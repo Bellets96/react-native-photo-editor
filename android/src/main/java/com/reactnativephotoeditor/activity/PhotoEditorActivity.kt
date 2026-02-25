@@ -28,6 +28,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.ChangeBounds
@@ -204,6 +206,13 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
     mRvTools = findViewById(R.id.rvConstraintTools)
     mRvFilters = findViewById(R.id.rvFilterView)
     mRootView = findViewById(R.id.rootView)
+
+    // Handle system insets for navigation bar
+    ViewCompat.setOnApplyWindowInsetsListener(mRootView!!) { view, insets ->
+      val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+      mRootView?.setPadding(0, 0, 0, systemBars.bottom)
+      insets
+    }
   }
 
   override fun onEditTextChangeListener(rootView: View, text: String, colorCode: Int) {
